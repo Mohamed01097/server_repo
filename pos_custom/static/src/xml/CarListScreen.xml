@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="CarListScreen" owl="1">
+        <div class="partnerlist-screen screen">
+            <div class="screen-content">
+                <div class="top-content">
+                    <div class="button back" t-on-click="back">
+                        <i t-if="env.isMobile" class="fa fa-angle-double-left"/>
+                        <t t-if="!env.isMobile"> Discard</t>
+                    </div>
+                    <div class="top-right-buttons">
+                        <div class="search-bar-container sb-partner" t-if="!state.detailIsShown">
+                            <div class="pos-search-bar">
+                                <i class="fa fa-search" t-on-click="_onPressEnterKey"/>
+                                <input t-ref="search-word-input-car" placeholder="Search Cars..." size="1" t-on-keyup="updateCarList" />
+                                <i class="fa fa-times" t-on-click="_clearSearch"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="full-content">
+                    <div class="partner-window">
+                        <section class="subwindow list">
+                            <div class="subwindow-container">
+                                <div t-if="!state.detailIsShown" class="subwindow-container-fix scrollable-y">
+                                    <table class="partner-list">
+                                        <thead>
+                                            <tr>
+                                                <th>رقم اللوحة</th>
+                                                <th>اسم السائق</th>
+                                                <th>النوع</th>
+                                                <th>حراج/تسويق</th>
+                                                <th>الموديل</th>
+                                                <th>السائق</th>
+                                                <th>المورد</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="partner-list-contents">
+                                            <t t-foreach="cars" t-as="car" t-key="car.id">
+                                                <CarLine car="car"
+                                                            selectedCar="state.selectedCar"
+                                                            detailIsShown="state.detailIsShown"
+                                                            onClickCar.bind="clickCar"/>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+
+</templates>

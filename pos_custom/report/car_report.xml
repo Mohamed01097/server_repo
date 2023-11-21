@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <template id="car_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <t t-if="o.get_car_orders(o.session_id.order_ids, car)" t-foreach="o.car_ids" t-as="car">
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td style="text-align: right;"><t t-esc="o.session_id.start_at"/></td>
+                                        <td style="text-align: right; font-weight: bold;">التاريخ</td>
+                                        <td style="text-align: right;"><t t-esc="car.name"/></td>
+                                        <td style="text-align: right; font-weight: bold;">السيارة</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"/>
+                                        <td style="text-align: right;"><t t-esc="car.vendor_id.name"/></td>
+                                        <td style="text-align: right; font-weight: bold;">المورد</td>
+                                    </tr>
+                                </table>
+                                <br/>
+                                <table class="table table-bordered table-sm" style="text-align: right;">
+                                    <thead>
+                                        <tr>
+                                            <th>رقم المرجع أو فاتورة البيع</th>
+                                            <th>العميل</th>
+                                            <th>السعر</th>
+                                            <th>الكمية</th>
+                                            <th>الصنف</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.get_car_orders(o.session_id.order_ids, car)" t-as="order">
+                                            <t t-foreach="order.lines" t-as="line">
+                                                <tr>
+                                                    <td>
+                                                        <t t-if="order.is_invoiced">
+                                                            <t t-esc="order.account_move.name"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-esc="order.name"/>
+                                                        </t>
+                                                    </td>
+                                                    <td><t t-esc="order.partner_id.name"/></td>
+                                                    <td><t t-esc="line.price_unit"/></td>
+                                                    <td><t t-esc="line.qty"/></td>
+                                                    <td><t t-esc="line.full_product_name"/></td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </tbody>
+                                    
+                                </table>
+                                <p style="page-break-after: always;"/>
+                                <!-- <t t-if="condition">
+                                    
+                                </t> -->
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

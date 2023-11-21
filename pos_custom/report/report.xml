@@ -1,0 +1,12 @@
+<odoo>
+
+    <record id="eos_car_report" model="ir.actions.report">
+        <field name="name">Car Report</field>
+        <field name="model">pos.session.car</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pos_custom.car_report</field>
+        <field name="report_file">pos_custom.car_report</field>
+        <field name="print_report_name">('Car Report')</field>
+    </record>
+
+</odoo>

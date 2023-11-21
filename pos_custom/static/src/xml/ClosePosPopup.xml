@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ClosePosPopup" t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//main" position="inside">
+            <br/>
+            <div class="row">
+                <div>Select Car for Report</div>
+                <div>
+                <select id="selected_car">
+                    <option value='All'>All</option>
+                    <t t-foreach='env.pos.get_cars()' t-as='car' t-key='car.id'>
+                        <option t-att-value='car.id'>
+                            <t t-esc='car.name'/>
+                        </option>
+                    </t>
+                </select>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//footer" position="inside">
+            <div class="button highlight" t-on-click="downloadCarReport">Cars Report</div>
+        </xpath>
+    </t>
+</templates>

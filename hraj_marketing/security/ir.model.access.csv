@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_truck,access_vendor_truck,model_vendor_truck,,1,1,1,1
+access_vendor_phone,access_vendor_phone,model_vendor_phone,,1,1,1,1
+access_vendor_employee,access_vendor_employee,model_vendor_employee,,1,1,1,1
+access_pos_order_filter_wizard,pos_order_filter_wizard,model_pos_order_filter_wizard,,1,1,1,1
+access_settlement,settlement,model_settlement,,1,1,1,1
+access_settlement_line,settlement_line,model_settlement_line,,1,1,1,1
+access_expense_line,expense_line,model_expense_line,,1,1,1,1

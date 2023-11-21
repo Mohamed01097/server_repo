@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="CarLine" owl="1">
+        <tr t-attf-class="partner-line {{highlight}}" t-att-data-id="props.car.id"
+            t-on-click="() => this.props.onClickCar(props.car)">
+            <td>
+                <div>
+                    <t t-esc="props.car.name or ''" />
+                </div>
+                <div t-if="_isCarSelected" class="unselect-tag">
+                    <i class="fa fa-times"></i>
+                    <span> unselect </span>
+                </div>
+            </td>
+            <td>
+                <t t-esc="props.car.license" />
+            </td>
+            <td>
+                <t t-esc="props.car.type" />
+            </td>
+            <td>
+                <t t-if="props.car.work_type == 'market'">تسويق</t>
+                <t t-if="props.car.work_type == 'hraj'">حراج</t>
+            </td>
+            <td>
+                <t t-esc="props.car.model" />
+            </td>
+            <td>
+                <t t-if="props.car.driver" t-esc="props.car.driver" />
+            </td>
+            <td>
+                <t t-esc="props.car.vendor_id[1]"/>
+            </td>
+            <td class="partner-line-last-column-placeholder oe_invisible"></td>
+        </tr>
+    </t>
+
+</templates>
